@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view task</title>
+</head>
+<body>
+<h1>View Task</h1>
+<table>
+{% for i in context%}
+  <tr>
+    <th> <p>{{ i.username}}</p> </th>
+    <th><p>{{ i.phone }}</p> </th>
+    <th> <p>{{i.full_name}}</p> </th>
+      <th><a href="{% url 'delete_user' i.id %}"> <b>delete</b> </a> </th>
+  </tr>
+{% endfor %}
+</table>
+</body>
+</html>
