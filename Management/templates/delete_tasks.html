@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete_tasks</title>
+</head>
+<body>
+<h1>View Task</h1>
+<table>
+{% for i in context%}
+  <tr>
+    <th> <p>{{ i.Task_name }}</p> </th>
+    <th><p>{{ i.Task_Status }}</p> </th>
+    <th> <p>{{i.assigned_to}}</p> </th>
+      <th><a class="card-text" href="/delete_task/{{i.id}}" ><button type="button">delete</button></a></th>
+  </tr>
+{% endfor %}
+</table>
+</body>
+</html>

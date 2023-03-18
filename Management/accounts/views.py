@@ -14,8 +14,11 @@ def login_user(request):
     if request.method=="POST":
         phone = request.POST.get('phone', False)
         password = request.POST.get('password', False)
+        print(phone)
+        print(password)
         user = authenticate(request, phone=phone, password=password)
         if user is not None:
+            print(user)
             login(request, user)
             return redirect('home')
             ...
@@ -54,9 +57,13 @@ def Create_task(request):
     else:
         return render(request, "create_task.html", context)
 
-def View_task(request):
+def view_all_created_task(request):
     tasks = Tasks.objects.all()
-    return render(request, 'View_task.html', {'context': tasks})
+    return render(request, 'View_all_created_task.html', {'context': tasks})
+def delete_task(request,id):
+    obj = get_object_or_404(Tasks, id=id)
+    obj.delete()
+    return redirect('home')
 
 def Update_Task(request, id):
     # dictionary for initial data with

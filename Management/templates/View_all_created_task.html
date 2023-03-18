@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>view task</title>
+    <title>view_all_created_task</title>
 </head>
 <body>
 <h1>View Task</h1>
@@ -12,6 +12,8 @@
     <th> <p>{{ i.Task_name }}</p> </th>
     <th><p>{{ i.Task_Status }}</p> </th>
     <th> <p>{{i.assigned_to}}</p> </th>
+      <th><a class="card-text" href="/update_task/{{i.id}}" ><button type="button">update</button></a></th>
+      <th><a class="card-text" href="/delete_task/{{i.id}}" ><button type="button">delete</button></a></th>
   </tr>
 {% endfor %}
 </table>
