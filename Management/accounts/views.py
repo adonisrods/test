@@ -38,7 +38,19 @@ def home(request):
 def login_failed(request):
     return render(request, 'login_failed.html', {})
 
+def Create_user(request):
+    context = {}
+    context['form'] = usercreate()
+    if request.method == 'POST':
+        upload = Taskcreate(request.POST, request.FILES)
+        if upload.is_valid():
+            upload.save()
+            return redirect('home')
+        else:
+            return HttpResponse("""your form data is invalid,""")
 
+    else:
+        return render(request, "create_user.html", context)
 def logout_user(request):
     logout(request)
     return redirect('login')
@@ -50,7 +62,7 @@ def Create_task(request):
         upload = Taskcreate(request.POST, request.FILES)
         if upload.is_valid():
             upload.save()
-            return redirect('view_task')
+            return redirect('view_all_created_task')
         else:
             return HttpResponse("""your form data is invalid,""")
 
